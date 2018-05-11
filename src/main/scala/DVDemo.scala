@@ -37,7 +37,7 @@ object DVDemo extends App {
   reader.close()
   writer.close()
 
-  val r2 = CSVReader.open(new File(intermediate_file_path))
+  val r2 = CSVReader.open(new File(intermediate_file_path+"/intermediate_out.csv"))
   val resultsMap = Map[String, List[String]]
   r2.toStream.groupBy(_(0)).aggregate()
 
