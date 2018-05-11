@@ -36,6 +36,9 @@ object DVDemo extends App {
   val r2 = CSVReader.open(new File("/home/mjn/development/dv01/intermediate_out.csv"))
   val resultsMap = Map[String, List[String]]
   r2.toStream.groupBy(_(0)).aggregate()
+
+  // These two methods don't really work
+
   def avg(xs: List[Int]): Double = {
     xs.reduce(_ + _) / xs.size
   }
