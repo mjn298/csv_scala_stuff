@@ -2,7 +2,11 @@ import java.io.File
 import com.github.tototoshi.csv._
 
 object DVDemo extends App {
-  val reader = CSVReader.open(new File("/home/mjn/development/dv01/LoanStats3c.csv"))
+
+  val file_path = "YOUR/PATH/HERE"
+  val intermediate_file_path = "YOUR/PATH/HERE"
+
+  val reader = CSVReader.open(new File(file_path))
 
   implicit val head = reader.readNext().get.zipWithIndex.toMap
 
@@ -33,7 +37,7 @@ object DVDemo extends App {
   reader.close()
   writer.close()
 
-  val r2 = CSVReader.open(new File("/home/mjn/development/dv01/intermediate_out.csv"))
+  val r2 = CSVReader.open(new File(intermediate_file_path))
   val resultsMap = Map[String, List[String]]
   r2.toStream.groupBy(_(0)).aggregate()
 
